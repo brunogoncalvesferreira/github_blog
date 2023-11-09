@@ -16,4 +16,8 @@ export const PostsContent = styled.div`
   grid-template-columns: repeat(2, 1fr);
   column-gap: 2rem;
   row-gap: 0rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `

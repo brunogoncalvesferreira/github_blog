@@ -1,11 +1,15 @@
 import { HeaderContainer } from './styles'
 
-import headerImage from '../../assets/cover_header.svg'
+import imageHeader from '../../assets/cover_header.svg'
 
 export function Header() {
   return (
-    <HeaderContainer>
-      <img src={headerImage} alt="Image Header Banner" width="100%" />
-    </HeaderContainer>
+    <HeaderContainer
+      style={{
+        backgroundImage: `url(${imageHeader})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+      }}
+    ></HeaderContainer>
   )
 }

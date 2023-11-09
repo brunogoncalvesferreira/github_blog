@@ -15,6 +15,19 @@ export const CardContainer = styled.div`
   position: sticky;
   z-index: 50;
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    header {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    img {
+      margin: 0 auto;
+    }
+  }
+
   img {
     border-radius: 8px;
   }
@@ -61,6 +74,11 @@ export const InfoContent = styled.ul`
   align-items: center;
   gap: 1.5rem;
   margin-top: 1.5rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: initial;
+  }
 
   li {
     display: flex;
