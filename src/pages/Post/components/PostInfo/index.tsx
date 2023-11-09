@@ -19,7 +19,7 @@ export function PostInfo() {
           Voltar
         </NavLink>
 
-        <NavLink to={'https:github.com/brunogoncalvesferreira'}>
+        <NavLink to={'https://github.com/brunogoncalvesferreira'}>
           Ver no Github
           <ArrowSquareOut size={16} />
         </NavLink>

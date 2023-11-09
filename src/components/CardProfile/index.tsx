@@ -7,40 +7,34 @@ import {
   InfoContent,
   TitleName,
 } from './styles'
+import { useContext } from 'react'
+import { BlogGithubContext } from '../../contexts/BlogGithubContext'
 
 export function CardProfile() {
+  const { user } = useContext(BlogGithubContext)
   return (
     <CardContainer>
-      <img
-        src="https://github.com/brunogoncalvesferreira.png"
-        width={148}
-        height={148}
-        alt="Foto de Bruno Gonçalves Ferreira"
-      />
+      <img src={user.avatar} width={148} height={148} alt={user.name} />
 
       <CardContent>
         <header>
-          <TitleName>Bruno Ferreira</TitleName>
-          <NavLink to={'/post'}>
+          <TitleName>{user.name}</TitleName>
+          <NavLink to={'/'}>
             Github <ArrowSquareOut size={16} />
           </NavLink>
         </header>
 
-        <Bio>
-          Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
-          viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat
-          pulvinar vel mass.
-        </Bio>
+        <Bio>{user.bio}</Bio>
 
         <InfoContent>
           <li>
-            <GithubLogo size={18} /> bruno
+            <GithubLogo size={18} /> {user.username}
           </li>
           <li>
-            <Buildings size={18} /> Rocketseat
+            <Buildings size={18} /> {user.company}
           </li>
           <li>
-            <Users size={18} /> 32 seguidores
+            <Users size={18} /> {user.followers} seguidores
           </li>
         </InfoContent>
       </CardContent>

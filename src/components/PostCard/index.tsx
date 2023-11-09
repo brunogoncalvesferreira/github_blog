@@ -1,10 +1,10 @@
-import { PostContainer } from './styles'
+import { PostContainer, TitlePost } from './styles'
 
 export function PostCard() {
   return (
     <PostContainer>
       <header>
-        <h2>Javascript data types and data structures</h2>
+        <TitlePost>Javascript data types and data structures</TitlePost>
         <time>Há 1 dia</time>
       </header>
 
