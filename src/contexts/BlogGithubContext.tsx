@@ -50,7 +50,6 @@ export function BlogGithubProvider({ children }: BlogGithubProviderProps) {
   async function getUserGithub() {
     const response = await api.get('brunogoncalvesferreira')
 
-    console.log(response.data)
     setUser({
       avatar: response.data.avatar_url,
       name: response.data.name,
@@ -64,7 +63,6 @@ export function BlogGithubProvider({ children }: BlogGithubProviderProps) {
 
   async function getGithubIssues() {
     const response = await apiBlog.get('brunogoncalvesferreira/issues/issues')
-    console.log(response.data)
 
     setPosts(response.data)
   }
