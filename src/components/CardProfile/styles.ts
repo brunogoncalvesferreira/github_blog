@@ -60,6 +60,10 @@ export const TitleName = styled.h1`
 export const CardContent = styled.div`
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `
 
 export const Bio = styled.p`
@@ -67,6 +71,10 @@ export const Bio = styled.p`
   font-size: 1rem;
   color: ${(props) => props.theme['base-text']};
   line-height: 1.6;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `
 
 export const InfoContent = styled.ul`

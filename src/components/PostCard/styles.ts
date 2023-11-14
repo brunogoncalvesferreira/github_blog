@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-export const PostContainer = styled.div`
-  width: 25.9375rem;
+export const PostContainer = styled(Link)`
+  width: 100%;
   height: 16.25rem;
   margin-top: 3rem;
 
@@ -15,31 +16,38 @@ export const PostContainer = styled.div`
     border: 2px solid ${(props) => props.theme['base-label']};
   }
 
-  header {
+  div {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     gap: 0.5rem;
-  }
 
-  time {
-    font-size: 0.875rem;
-    color: ${(props) => props.theme['base-span']};
-    line-height: 2;
+    strong {
+      flex: 1;
+      font-size: 1.25rem;
+      color: ${(props) => props.theme['base-title']};
+    }
+
+    time {
+      width: fit-content;
+      font-size: 0.875rem;
+      color: ${(props) => props.theme['base-span']};
+      line-height: 2;
+    }
   }
 
   p {
-    margin-top: 1rem;
+    margin-top: 1.25rem;
     color: ${(props) => props.theme['base-text']};
+
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    width: 20rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 920px) {
     width: 100%;
   }
-`
-
-export const TitlePost = styled.h1`
-  flex: 1;
-  font-size: 1.25rem;
-  color: ${(props) => props.theme['base-title']};
 `

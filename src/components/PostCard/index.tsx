@@ -1,18 +1,21 @@
-import { PostContainer, TitlePost } from './styles'
+import { PostContainer } from './styles'
+import { PostsProps } from '../../contexts/BlogGithubContext'
+import { formattedDate } from '../../utils/formatted'
 
-export function PostCard() {
+interface PostCardProps {
+  post: PostsProps
+}
+
+export function PostCard({ post }: PostCardProps) {
+  const formmatedDate = formattedDate(new Date(post.created_at))
   return (
-    <PostContainer>
-      <header>
-        <TitlePost>Javascript data types and data structures</TitlePost>
-        <time>Há 1 dia</time>
-      </header>
+    <PostContainer to={`/post/${post.number}`}>
+      <div>
+        <strong>{post.title}</strong>
+        <time>{formmatedDate}</time>
+      </div>
 
-      <p>
-        Programming languages all have built-in data structures, but these often
-        differ from one language to another. This article attempts to list the
-        built-in data structures available in...
-      </p>
+      <p>{post.body}</p>
     </PostContainer>
   )
 }

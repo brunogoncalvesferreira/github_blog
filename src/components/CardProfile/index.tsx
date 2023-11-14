@@ -19,7 +19,7 @@ export function CardProfile() {
       <CardContent>
         <header>
           <TitleName>{user.name}</TitleName>
-          <NavLink to={'/'}>
+          <NavLink to={user.link ? user.link : ''} target="_blank">
             Github <ArrowSquareOut size={16} />
           </NavLink>
         </header>

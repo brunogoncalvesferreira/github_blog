@@ -1,7 +1,22 @@
+import { useParams } from 'react-router-dom'
+import { apiBlog } from '../../lib/axios'
 import { PostInfo } from './components/PostInfo'
 import { PostContainer, PostContent } from './styles'
+import { useEffect } from 'react'
 
 export function Post() {
+  const { id } = useParams()
+  async function getGithubPosts() {
+    const response = await apiBlog.get(
+      `brunogoncalvesferreira/issues/issues/${id}`,
+    )
+
+    console.log(response.data)
+  }
+
+  useEffect(() => {
+    getGithubPosts()
+  })
   return (
     <PostContainer>
       <PostInfo />

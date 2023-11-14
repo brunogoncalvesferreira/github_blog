@@ -9,6 +9,8 @@ export function Header() {
         backgroundImage: `url(${imageHeader})`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        width: '100%',
       }}
     ></HeaderContainer>
   )
