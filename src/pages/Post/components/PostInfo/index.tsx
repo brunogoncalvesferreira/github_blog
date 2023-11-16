@@ -28,7 +28,7 @@ export function PostInfo({ postsData }: PostInfoProps) {
           Voltar
         </NavLink>
 
-        <NavLink to={'https://github.com/brunogoncalvesferreira'}>
+        <NavLink to={`${postsData.html_url}`} target="_blank">
           Ver no Github
           <ArrowSquareOut size={16} />
         </NavLink>

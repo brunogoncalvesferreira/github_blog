@@ -18,6 +18,9 @@ export interface PostProps {
   }
 }
 
+const username = import.meta.env.VITE_GITHUB_USERNAME
+const repository = import.meta.env.VITE_GITHUB_REPOSITORY
+
 export function Post() {
   const { id } = useParams()
   const [postsData, setPostsData] = useState<PostProps>({} as PostProps)
@@ -25,7 +28,7 @@ export function Post() {
   useEffect(() => {
     async function getGithubPagePosts() {
       const response = await apiBlog.get(
-        `repos/brunogoncalvesferreira/issues/issues/${id}`,
+        `repos/${username}/${repository}/issues/${id}`,
       )
       setPostsData(response.data)
     }

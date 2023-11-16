@@ -42,6 +42,8 @@ interface BlogGithubProviderProps {
   children: ReactNode
 }
 
+const username = import.meta.env.VITE_GITHUB_USERNAME
+const repository = import.meta.env.VITE_GITHUB_REPOSITORY
 export function BlogGithubProvider({ children }: BlogGithubProviderProps) {
   const [user, setUser] = useState<UserProps>({
     avatar: '',
@@ -56,7 +58,7 @@ export function BlogGithubProvider({ children }: BlogGithubProviderProps) {
   const [posts, setPosts] = useState<PostsProps[]>([])
 
   async function getUserGithub() {
-    const response = await api.get('brunogoncalvesferreira')
+    const response = await api.get(`${username}`)
 
     setUser({
       avatar: response.data.avatar_url,
@@ -70,16 +72,14 @@ export function BlogGithubProvider({ children }: BlogGithubProviderProps) {
   }
 
   async function getGithubPosts() {
-    const response = await apiBlog.get(
-      'repos/brunogoncalvesferreira/issues/issues',
-    )
+    const response = await apiBlog.get(`repos/${username}/${repository}/issues`)
 
     setPosts(response.data)
   }
 
   const filterPost = useCallback(async (query: string = '') => {
     const response = await apiBlog.get(
-      `/search/issues?q=${query}%20repo:brunogoncalvesferreira/issues`,
+      `/search/issues?q=${query}%20repo:${username}/${repository}`,
     )
 
     setPosts(response.data.items)
