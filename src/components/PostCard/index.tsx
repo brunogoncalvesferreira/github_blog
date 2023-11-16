@@ -1,7 +1,6 @@
 import { PostContainer } from './styles'
 import { PostsProps } from '../../contexts/BlogGithubContext'
 import { formattedDate } from '../../utils/formatted'
-
 interface PostCardProps {
   post: PostsProps
 }

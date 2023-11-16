@@ -10,7 +10,16 @@ import { NavLink } from 'react-router-dom'
 import { InfoContent } from '../../../../components/CardProfile/styles'
 import { PostInfoContainer, TitlePostInfo } from './styles'
 
-export function PostInfo() {
+import { formattedDate } from '../../../../utils/formatted'
+import { PostsProps } from '../../../../contexts/BlogGithubContext'
+
+interface PostInfoProps {
+  postsData: PostsProps
+}
+
+export function PostInfo({ postsData }: PostInfoProps) {
+  const formmatedDatePost = formattedDate(new Date(postsData.created_at))
+
   return (
     <PostInfoContainer>
       <header>
@@ -25,19 +34,20 @@ export function PostInfo() {
         </NavLink>
       </header>
 
-      <TitlePostInfo>Javascript data types and structures</TitlePostInfo>
+      <TitlePostInfo>{postsData.title}</TitlePostInfo>
 
       <InfoContent>
         <li>
           <GithubLogo />
-          brunogoncalvesferreira
+          {postsData.user ? postsData.user.login : ''}
         </li>
         <li>
           <Calendar />
-          Há 1 dia
+          {formmatedDatePost}
         </li>
         <li>
-          <ChatCircle />5 Comentários
+          <ChatCircle />
+          {postsData.comments} Comentários
         </li>
       </InfoContent>
     </PostInfoContainer>

@@ -7,6 +7,7 @@ import { BlogGithubContext } from '../../contexts/BlogGithubContext'
 
 export function Home() {
   const { posts } = useContext(BlogGithubContext)
+
   return (
     <HomeContainer>
       <CardProfile />

@@ -5,5 +5,5 @@ export const api = axios.create({
 })
 
 export const apiBlog = axios.create({
-  baseURL: 'https://api.github.com/repos/',
+  baseURL: 'https://api.github.com/',
 })

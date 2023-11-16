@@ -1,4 +1,10 @@
-import { ReactNode, createContext, useState, useEffect } from 'react'
+import {
+  ReactNode,
+  createContext,
+  useState,
+  useEffect,
+  useCallback,
+} from 'react'
 import { api, apiBlog } from '../lib/axios'
 
 interface UserProps {
@@ -26,6 +32,8 @@ export interface PostsProps {
 export type BlogGithubContextType = {
   user: UserProps
   posts: PostsProps[]
+  postsLength: number
+  filterPost: (query: string) => Promise<void>
 }
 
 export const BlogGithubContext = createContext({} as BlogGithubContextType)
@@ -61,18 +69,30 @@ export function BlogGithubProvider({ children }: BlogGithubProviderProps) {
     })
   }
 
-  async function getGithubIssues() {
-    const response = await apiBlog.get('brunogoncalvesferreira/issues/issues')
+  async function getGithubPosts() {
+    const response = await apiBlog.get(
+      'repos/brunogoncalvesferreira/issues/issues',
+    )
 
     setPosts(response.data)
   }
 
-  useEffect(() => {
-    getUserGithub()
-    getGithubIssues()
+  const filterPost = useCallback(async (query: string = '') => {
+    const response = await apiBlog.get(
+      `/search/issues?q=${query}%20repo:brunogoncalvesferreira/issues`,
+    )
+
+    setPosts(response.data.items)
   }, [])
 
-  const values = { user, posts }
+  useEffect(() => {
+    getUserGithub()
+    getGithubPosts()
+  }, [])
+
+  const postsLength = posts.length
+
+  const values = { user, posts, postsLength, filterPost }
   return (
     <BlogGithubContext.Provider value={values}>
       {children}
