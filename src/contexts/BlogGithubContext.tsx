@@ -71,11 +71,11 @@ export function BlogGithubProvider({ children }: BlogGithubProviderProps) {
     })
   }
 
-  async function getGithubPosts() {
+  const getGithubPosts = useCallback(async () => {
     const response = await apiBlog.get(`repos/${username}/${repository}/issues`)
 
     setPosts(response.data)
-  }
+  }, [])
 
   const filterPost = useCallback(async (query: string = '') => {
     const response = await apiBlog.get(
@@ -88,7 +88,7 @@ export function BlogGithubProvider({ children }: BlogGithubProviderProps) {
   useEffect(() => {
     getUserGithub()
     getGithubPosts()
-  }, [])
+  }, [getGithubPosts])
 
   const postsLength = posts.length
 

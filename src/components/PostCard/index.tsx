@@ -1,6 +1,7 @@
 import { PostContainer } from './styles'
 import { PostsProps } from '../../contexts/BlogGithubContext'
 import { formattedDate } from '../../utils/formatted'
+import { memo } from 'react'
 interface PostCardProps {
   post: PostsProps
 }
@@ -18,3 +19,5 @@ export function PostCard({ post }: PostCardProps) {
     </PostContainer>
   )
 }
+
+export const PostCardMemo = memo(PostCard)

@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { memo, useContext } from 'react'
 import { FormContainer, SearchFormContainer } from './styles'
 import { BlogGithubContext } from '../../../../contexts/BlogGithubContext'
 import * as z from 'zod'
@@ -37,3 +37,5 @@ export function SearchForm() {
     </SearchFormContainer>
   )
 }
+
+export const SearchFormMemo = memo(SearchForm)
