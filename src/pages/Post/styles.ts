@@ -20,4 +20,8 @@ export const PostContent = styled.div`
     line-height: 1.6;
     color: ${(props) => props.theme['base-text']};
   }
+
+  img {
+    width: 100%;
+  }
 `
